@@ -1,23 +1,23 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Categories(BaseModel):
-    id: int
-    name: str
+    id: int | None
+    name: str | None
 
 
 class PCategories(Categories):
-    books: int
+    books: int | None
 
 
 class Book(BaseModel):
-    id: int
-    name: str
-    author: str
-    categories: list[Categories]
+    id: int | None
+    name: str | None
+    author: str | None
+    categories: list[Categories] | None
 
 
 class LikedBooks(BaseModel):
-    principal_categories: list[PCategories]
-    books: list[Book]
-    total_books: list
+    principal_categories: list[PCategories] | None
+    books: list[Book] | None
+    total_books: int | None

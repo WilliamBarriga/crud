@@ -20,6 +20,7 @@ from books.router import router as books_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """task to execute on startup and shutodown"""
     db.create_db()
     yield
     db.close()

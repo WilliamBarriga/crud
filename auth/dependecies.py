@@ -15,8 +15,8 @@ from auth.services.token import SECRET_KEY
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
-async def get_current_user(token: str = Depends(oauth2_scheme)):
-    """get the current user dependency"""
+async def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
+    """decode and return the logged user"""
     error_message = "coul not validate credentials"
 
     try:

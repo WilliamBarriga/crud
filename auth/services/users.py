@@ -40,6 +40,11 @@ def authenticate_user(email: str, password: str) -> User:
 
 
 def create_user_signup(user: SignupUser) -> User:
+    """create user on signup action
+
+    Args:
+        user (SignupUser): user information
+    """
     exists = db.sp("crud_validate_user_mail", [f"'{user.email}'::varchar"])[0]
     if exists["duplicated"]:
         raise ValidationException("this user already exists")

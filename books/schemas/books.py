@@ -1,3 +1,6 @@
+from enum import Enum, auto
+from datetime import datetime
+
 from pydantic import BaseModel, Field
 
 # Schemas
@@ -16,3 +19,10 @@ class CreateBook(BaseBook):
 class Book(BaseBook):
     id: int
     active: bool
+    categories: list[Category]
+    updated_at: datetime
+
+
+class CUBook(Enum):
+    create = auto()
+    udpate = auto()

@@ -46,9 +46,14 @@ def create_access_token(
 
 
 def generate_token(user: User) -> str:
+    """generate a token for auth
+
+    Args:
+        user (User): user information
+    """
     access_token_expires = timedelta(minutes=120)
     token = create_access_token(
-        data=user.model_dump(mode="json"), expires_delta=access_token_expires,
+        data=user.model_dump(mode="json"),
+        expires_delta=access_token_expires,
     )
     return token
-
